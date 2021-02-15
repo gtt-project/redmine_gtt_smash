@@ -11,7 +11,7 @@ The Geo-Task-Tracker (GTT) S.M.A.S.H plugin adds support for the mobile app [S.M
 
 ## Project health
 
-[TBD]
+![CI #develop](https://github.com/gtt-project/redmine_gtt_smash/workflows/Test%20with%20Redmine/badge.svg)
 
 ## Requirements
 
