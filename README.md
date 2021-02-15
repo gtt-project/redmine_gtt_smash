@@ -6,8 +6,12 @@ The Geo-Task-Tracker (GTT) S.M.A.S.H plugin adds support for the mobile app [S.M
 
 - Authenticate from S.M.A.S.H with a Redmine account
 - Upload mobile notes as issues
-- Retrieve custom notes configurations
+- Retreive custom notes configurations
 - and more ...
+
+## Project health
+
+[TBD]
 
 ## Requirements
 
