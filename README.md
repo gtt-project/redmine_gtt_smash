@@ -1,15 +1,13 @@
 # Redmine GTT S.M.A.S.H Plugin
 
+![CI #develop](https://github.com/gtt-project/redmine_gtt_smash/workflows/Test%20with%20Redmine/badge.svg)
+
 The Geo-Task-Tracker (GTT) S.M.A.S.H plugin adds support for the mobile app [S.M.A.S.H](https://github.com/moovida/smash):
 
 - Authenticate from S.M.A.S.H with a Redmine account
 - Upload mobile notes as issues
 - Retreive custom notes configurations
 - and more ...
-
-## Project health
-
-![CI #develop](https://github.com/gtt-project/redmine_gtt_smash/workflows/Test%20with%20Redmine/badge.svg)
 
 ## Requirements
 
