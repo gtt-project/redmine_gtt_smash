@@ -28,13 +28,13 @@ class SmashTagsController < ApplicationController
             # Default fields
             {
               key: "project_id",
-              value: @project.id,
+              value: @project.id.to_s,
               type: "hidden",
               mandatory: "yes"
             },
             {
               key: "tracker_id",
-              value: tracker.id,
+              value: tracker.id.to_s,
               type: "hidden",
               mandatory: "yes"
             },
