@@ -38,7 +38,94 @@ More information on installing (and uninstalling) Redmine plugins can be found h
 
 ## How to use
 
-[Settings, screenshots, etc.]
+- Make sure REST web services is enabled: http://localhost:3000/settings?tab=api
+- Enable the plugin in project settings
+
+The Geo-Task-Tracker (GTT) S.M.A.S.H plugin is connects the S.M.A.S.H mobile app with Redmine GTT. It provides a new API endpoint to provide the tracker type configuration as custom notes. 
+
+```
+http://localhost:3000/projects/<project-id>/smash_tags.json
+```
+
+Example output for tracker type `Support`:
+
+```
+  {
+    "sectionname": "Support",
+    "sectiondescription": "",
+    "sectionicon": "image",
+    "forms": [
+      {
+        "formname": "Support",
+        "formitems": [
+          {
+            "key": "project_id",
+            "value": "1",
+            "type": "hidden",
+            "mandatory": "yes"
+          },
+          {
+            "key": "tracker_id",
+            "value": "3",
+            "type": "hidden",
+            "mandatory": "yes"
+          },
+          {
+            "key": "subject",
+            "label": "Subject",
+            "value": "",
+            "type": "string",
+            "mandatory": "yes"
+          },
+          {
+            "key": "priority_id",
+            "label": "Priority",
+            "values": {
+              "items": [
+                {
+                  "item": "Low"
+                },
+                {
+                  "item": "Normal"
+                },
+                {
+                  "item": "High"
+                },
+                {
+                  "item": "Urgent"
+                },
+                {
+                  "item": "Immediate"
+                }
+              ]
+            },
+            "value": "Normal",
+            "type": "stringcombo",
+            "mandatory": "yes"
+          },
+          {
+            "key": "is_private",
+            "label": "Private",
+            "type": "boolean",
+            "mandatory": "yes"
+          },
+          {
+            "key": "description",
+            "label": "Description",
+            "value": "",
+            "type": "string"
+          },
+          {
+            "key": "attachments",
+            "value": "",
+            "type": "pictures"
+          }
+        ]
+      }
+    ]
+  }
+]
+```
 
 ## Contributing and Support
 
