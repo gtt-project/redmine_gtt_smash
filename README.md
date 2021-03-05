@@ -138,6 +138,7 @@ See [all releases](https://github.com/gtt-project/redmine_gtt_smash/releases) wi
 ## Authors
 
 - [Ko Nagase](https://github.com/sanak)
+- [Daniel Kastl](https://github.com/dkastl)
 - ... [and others](https://github.com/gtt-project/redmine_gtt_smash/graphs/contributors)
 
 ## LICENSE
