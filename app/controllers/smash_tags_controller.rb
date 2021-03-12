@@ -1,16 +1,77 @@
 class SmashTagsController < ApplicationController
 
-  before_action :find_project_by_project_id
-  before_action :authorize
+  before_action :find_optional_project_and_authorize
 
-  accept_api_auth :index
+  accept_api_auth :project_tags, :global_tags
 
-  def index
+  def project_tags
+    smash_tags = build_tags
+    respond_to do |format|
+      format.api { render json: smash_tags }
+    end
+  end
+
+  def global_tags
+    smash_tags = build_tags
+    respond_to do |format|
+      format.api { render json: smash_tags }
+    end
+  end
+
+  private
+
+  def find_optional_project_and_authorize
+    if params[:project_id]
+      @project = Project.find params[:project_id]
+      authorize
+    else
+      authorize_global
+    end
+  end
+
+  def enabled_project_ids
+    EnabledModule.where(name: ['issue_tracking', 'gtt', 'gtt_smash']).
+      group(:project_id).
+      count('project_id').
+      keep_if {|k,v| v == 3}.keys
+  end
+
+  def valid_project_ids
+    project_ids = []
+    Project.where(status: "#{Project::STATUS_ACTIVE}").
+      where(id: enabled_project_ids()).
+      where(id: User.current.visible_project_ids).sort.each {|project|
+        if User.current.allowed_to?(:add_issues, project) and
+          User.current.allowed_to?(:view_gtt_smash, project)
+          project_ids.append(project.id)
+        end
+      }
+    return project_ids
+  end
+
+  def visible_trackers
+    tracker_ids = Set.new
+    valid_project_ids = valid_project_ids()
+    project_ids = []
+    if @project.present? and valid_project_ids.include?(@project.id)
+      project_ids.append(@project.id)
+    else
+      project_ids.concat(valid_project_ids)
+    end
+    Project.where(id: project_ids).each {|project|
+      project.trackers.each {|tracker|
+        tracker_ids.add(tracker.id)
+      }
+    }
+    Tracker.where(id: tracker_ids.to_a).sort
+  end
+
+  # SMASH (Geopaparazzi) form spec: https://www.geopaparazzi.org/geopaparazzi/index.html#_using_form_based_notes
+  def build_tags
     smash_tags = []
     # Issue priorities
     priorities = []
     default_priority = nil
-    # SMASH (Geopaparazzi) form spec: https://www.geopaparazzi.org/geopaparazzi/index.html#_using_form_based_notes
     IssuePriority.active.each do |priority|
       priorities.append({
         item: priority.name
@@ -21,24 +82,38 @@ class SmashTagsController < ApplicationController
     end
     # Issue categories
     categories = []
-    @project.issue_categories.each do |category|
-      categories.append({
-        item: category.name
-      })
+    if @project.present?
+      @project.issue_categories.each do |category|
+        categories.append({
+          item: category.name
+        })
+      end
     end
     # Versions
     versions = []
     default_version = nil
-    @project.versions.each do |version|
-      versions.append({
-        item: version.name
-      })
+    if @project.present?
+      @project.versions.each do |version|
+        versions.append({
+          item: version.name
+        })
+      end
+      if @project.default_version.present?
+        default_version = @project.default_version.name
+      end
     end
-    if @project.default_version.present?
-      default_version = @project.default_version.name
+    # Projects
+    projects = []
+    if @project.blank?
+      Project.where(id: User.current.visible_project_ids).sort.each {|project|
+        projects.append({
+          item: project.name
+        })
+      }
     end
     # Trackers
-    @project.trackers.sort.each do |tracker|
+    trackers = visible_trackers()
+    trackers.sort.each do |tracker|
       section = {
         sectionname: tracker.name,
         sectiondescription: tracker.description,
@@ -49,8 +124,10 @@ class SmashTagsController < ApplicationController
             # Core fields (undisablable)
             {
               key: "project_id",
-              value: @project.id.to_s,
-              type: "hidden",
+              label: l(:field_project),
+              value: @project.present? ? @project.id.to_s : "",
+              values: @project.present? ? nil : { items: projects },
+              type: @project.present? ? "hidden" : "stringcombo",
               mandatory: "yes"
             },
             {
@@ -90,7 +167,7 @@ class SmashTagsController < ApplicationController
       if tracker.core_fields.present?
         # assigned_to_id (don't support)
         # category_id
-        if tracker.core_fields.include?("category_id")
+        if tracker.core_fields.include?("category_id") and categories.present?
           formitems.append({
             key: "category_id",
             label: l(:field_category),
@@ -103,7 +180,7 @@ class SmashTagsController < ApplicationController
           })
         end
         # fixed_version_id
-        if tracker.core_fields.include?("fixed_version_id")
+        if tracker.core_fields.include?("fixed_version_id") and versions.present?
           formitems.append({
             key: "fixed_version_id",
             label: l(:field_version),
@@ -235,8 +312,6 @@ class SmashTagsController < ApplicationController
       end
       smash_tags.append(section)
     end
-    respond_to do |format|
-      format.api { render json: smash_tags }
-    end
+    return smash_tags
   end
 end
