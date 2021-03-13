@@ -49,8 +49,8 @@ class SmashTagsController < ApplicationController
     return project_ids
   end
 
-  def visible_trackers
-    tracker_ids = Set.new
+  def valid_tracker_project_ids
+    tracker_project_ids = {}
     valid_project_ids = valid_project_ids()
     project_ids = []
     if @project.present? and valid_project_ids.include?(@project.id)
@@ -60,10 +60,14 @@ class SmashTagsController < ApplicationController
     end
     Project.where(id: project_ids).each {|project|
       project.trackers.each {|tracker|
-        tracker_ids.add(tracker.id)
+        if tracker_project_ids.has_key?(tracker.id)
+          tracker_project_ids[tracker.id].append(project.id)
+        else
+          tracker_project_ids[tracker.id] = [project.id]
+        end
       }
     }
-    Tracker.where(id: tracker_ids.to_a).sort
+    return tracker_project_ids
   end
 
   # SMASH (Geopaparazzi) form spec: https://www.geopaparazzi.org/geopaparazzi/index.html#_using_form_based_notes
@@ -102,18 +106,19 @@ class SmashTagsController < ApplicationController
         default_version = @project.default_version.name
       end
     end
-    # Projects
-    projects = []
-    if @project.blank?
-      Project.where(id: User.current.visible_project_ids).sort.each {|project|
-        projects.append({
-          item: project.name
-        })
-      }
-    end
     # Trackers
-    trackers = visible_trackers()
-    trackers.sort.each do |tracker|
+    tracker_project_ids = valid_tracker_project_ids()
+    Tracker.where(id: tracker_project_ids.keys).sort.each do |tracker|
+      # Projects
+      project_ids = tracker_project_ids[tracker.id]
+      projects = []
+      if @project.blank? and project_ids.present?
+        Project.where(id: project_ids).sort.each {|project|
+          projects.append({
+            item: project.name
+          })
+        }
+      end
       section = {
         sectionname: tracker.name,
         sectiondescription: tracker.description,
