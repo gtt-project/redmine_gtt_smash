@@ -78,10 +78,13 @@ class SmashTagsController < ApplicationController
     default_priority = nil
     IssuePriority.active.each do |priority|
       priorities.append({
-        item: priority.name
+        item: {
+          label: priority.name,
+          value: priority.id.to_s
+        }
       })
       if priority.is_default
-        default_priority = priority.name
+        default_priority = priority.id.to_s
       end
     end
     # Issue categories
@@ -89,7 +92,10 @@ class SmashTagsController < ApplicationController
     if @project.present?
       @project.issue_categories.each do |category|
         categories.append({
-          item: category.name
+          item: {
+            label: category.name,
+            value: category.id.to_s
+          }
         })
       end
     end
@@ -99,11 +105,14 @@ class SmashTagsController < ApplicationController
     if @project.present?
       @project.versions.each do |version|
         versions.append({
-          item: version.name
+          item: {
+            label: version.name,
+            value: version.id.to_s
+          }
         })
       end
       if @project.default_version.present?
-        default_version = @project.default_version.name
+        default_version = @project.default_version.id
       end
     end
     # Trackers
@@ -115,7 +124,10 @@ class SmashTagsController < ApplicationController
       if @project.blank? and project_ids.present?
         Project.where(id: project_ids).sort.each {|project|
           projects.append({
-            item: project.name
+            item: {
+              label: project.name,
+              value: project.id.to_s
+            }
           })
         }
       end
@@ -230,7 +242,10 @@ class SmashTagsController < ApplicationController
           done_ratios = []
           0.step(100, 10) {|ratio|
             done_ratios.append({
-              item: "#{ratio} %"
+              item: {
+                label: "#{ratio} %",
+                value: ratio.to_s
+              }
             })
           }
           formitems.append({
@@ -239,7 +254,7 @@ class SmashTagsController < ApplicationController
             values: {
               items: done_ratios
             },
-            value: "0 %",
+            value: "0",
             type: "stringcombo"
           })
         end
