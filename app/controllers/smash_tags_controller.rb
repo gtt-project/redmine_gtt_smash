@@ -133,7 +133,7 @@ class SmashTagsController < ApplicationController
       end
       section = {
         sectionname: tracker.name,
-        sectiondescription: tracker.description,
+        sectiondescription: "GTT",
         sectionicon: "image",
         forms: [{
           formname: tracker.name,
