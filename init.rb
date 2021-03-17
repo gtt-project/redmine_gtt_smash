@@ -1,12 +1,12 @@
 require 'redmine'
 
 Redmine::Plugin.register :redmine_gtt_smash do
-  name 'Redmine GTT SMASH Plugin'
+  name 'Redmine GTT SMASH plugin'
   author 'Georepublic'
+  author_url 'https://github.com/georepublic'
+  url 'https://github.com/gtt-project/redmine_gtt_smash'
   description 'Adds SMASH integration capabilities for GTT projects'
   version '1.0.0'
-  url 'https://github.com/gtt-project/redmine_gtt_smash'
-  author_url 'https://github.com/gtt-project'
 
   requires_redmine :version_or_higher => '4.0.0'
 
