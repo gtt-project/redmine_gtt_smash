@@ -38,7 +38,23 @@ More information on installing (and uninstalling) Redmine plugins can be found h
 
 ## How to use
 
-[Settings, screenshots, etc.]
+- Make sure REST web services is enabled: http://localhost:3000/settings?tab=api
+- Enable the plugin in project settings
+
+The Geo-Task-Tracker (GTT) S.M.A.S.H plugin is connects the S.M.A.S.H mobile app with Redmine GTT. 
+It adds new API endpoints to provide the tracker type configuration as custom notes. 
+
+**Project level API endpoint** 
+
+```
+http://localhost:3000/projects/(project_id)/smash/tags.json
+```
+
+**Global level API endpoint** 
+
+```
+http://localhost:3000/smash/tags.json 
+```
 
 ## Contributing and Support
 
