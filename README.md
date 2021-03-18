@@ -6,7 +6,7 @@ The Geo-Task-Tracker (GTT) S.M.A.S.H plugin adds support for the mobile app [S.M
 
 - Authenticate from S.M.A.S.H with a Redmine account
 - Upload mobile notes as issues
-- Retreive custom notes configurations
+- Retrieve custom notes configurations
 - and more ...
 
 ## Requirements
@@ -44,7 +44,7 @@ More information on installing (and uninstalling) Redmine plugins can be found h
 The Geo-Task-Tracker (GTT) S.M.A.S.H plugin is connects the S.M.A.S.H mobile app with Redmine GTT. 
 It adds new API endpoints to provide the tracker type configuration as custom notes. 
 
-**Project--level API endpoint** 
+**Project level API endpoint** 
 
 ```
 http://localhost:3000/projects/(project_id)/smash/tags.json
