@@ -54,6 +54,10 @@ See [all releases](https://github.com/gtt-project/redmine_gtt_smash/releases) wi
 - [Daniel Kastl](https://github.com/dkastl)
 - ... [and others](https://github.com/gtt-project/redmine_gtt_smash/graphs/contributors)
 
+## Credits
+
+This plugin development was funded by [Hyakumori](https://www.hyakumori.com/). 
+
 ## LICENSE
 
 This program is free software. See [LICENSE](LICENSE) for more information.
