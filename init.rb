@@ -4,7 +4,7 @@ Redmine::Plugin.register :redmine_gtt_smash do
   name 'Redmine GTT SMASH Plugin'
   author 'Georepublic'
   description 'Adds SMASH integration capabilities for GTT projects'
-  version '0.0.1'
+  version '1.0.0'
   url 'https://github.com/gtt-project/redmine_gtt_smash'
   author_url 'https://github.com/gtt-project'
 
