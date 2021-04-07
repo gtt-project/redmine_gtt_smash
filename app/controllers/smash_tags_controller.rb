@@ -173,6 +173,7 @@ class SmashTagsController < ApplicationController
             {
               key: "is_private",
               label: l(:field_is_private),
+              value: "false",
               type: "boolean",
               mandatory: "yes"
             }
