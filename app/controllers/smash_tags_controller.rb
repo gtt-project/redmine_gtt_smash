@@ -75,7 +75,7 @@ class SmashTagsController < ApplicationController
     smash_tags = []
     # Issue priorities
     priorities = []
-    default_priority = nil
+    default_priority = ""
     IssuePriority.active.each do |priority|
       priorities.append({
         item: {
@@ -101,7 +101,7 @@ class SmashTagsController < ApplicationController
     end
     # Versions
     versions = []
-    default_version = nil
+    default_version = ""
     if @project.present?
       @project.versions.each do |version|
         versions.append({
@@ -112,7 +112,7 @@ class SmashTagsController < ApplicationController
         })
       end
       if @project.default_version.present?
-        default_version = @project.default_version.id
+        default_version = @project.default_version.id.to_s
       end
     end
     # Trackers
