@@ -1,6 +1,8 @@
 # Redmine GTT S.M.A.S.H Plugin
 
-![CI #develop](https://github.com/gtt-project/redmine_gtt_smash/workflows/Test%20with%20Redmine/badge.svg)
+<a href="https://weblate.osgeo.org/engage/gtt-project/">
+<img src="https://weblate.osgeo.org/widgets/gtt-project/-/redmine_gtt_smash/svg-badge.svg" alt="Translation status" />
+</a>
 
 The Geo-Task-Tracker (GTT) S.M.A.S.H plugin adds support for the mobile app [S.M.A.S.H](https://github.com/moovida/smash):
 
@@ -59,6 +61,12 @@ http://localhost:3000/smash/tags.json
 ## Contributing and Support
 
 The GTT Project appreciates any [contributions](https://github.com/gtt-project/.github/blob/main/CONTRIBUTING.md)! Feel free to contact us for [reporting problems and support](https://github.com/gtt-project/.github/blob/main/CONTRIBUTING.md).
+
+Help us to translate GTT Project using [OSGeo Weblate](https://weblate.osgeo.org/engage/gtt-project/):
+
+<a href="https://weblate.osgeo.org/engage/gtt-project/">
+<img src="https://weblate.osgeo.org/widgets/gtt-project/-/redmine_gtt_smash/multi-auto.svg" alt="Translation status" />
+</a>
 
 ## Version History
 
