@@ -29,7 +29,7 @@ In SMASH mobile application top menu go to **Export** or **Import**. Click on th
 
 ![GTT URL](import_setting.png) ![GTT URL](gtt_url.png)
 
-* **Server URL**: enter your Redmine URL `<account>.lobsta.io`
+* **Server URL**: enter your Redmine URL `example.com`
 * **Server Username**: your Redmine account's `username`
 * **Server Password**: your Redmine account's `password`
 
