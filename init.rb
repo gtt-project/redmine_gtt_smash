@@ -10,8 +10,15 @@ Redmine::Plugin.register :redmine_gtt_smash do
 
   requires_redmine :version_or_higher => '4.0.0'
 
-  # settings default: {
-  # }, partial: 'settings/gtt_smash_settings'
+  settings(
+    default: {
+      'tracker_simple_notes' => 0,
+      'tracker_photo_notes' => 0,
+      'tracker_gps_logs' => 1,
+      'default_subject' => ""
+    },
+    partial: 'gtt_smash/settings'
+  )
 
   project_module :gtt_smash do
     permission :view_gtt_smash, {

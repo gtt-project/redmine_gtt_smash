@@ -1,3 +1,10 @@
 ja:
   permission_view_gtt_smash: "GTT SMASHの閲覧"
   project_module_gtt_smash: "GTT SMASH"
+
+  tracker_simple_note: "Tracker for Simple Notes"
+  tracker_photo_note: "Tracker for Photo Notes"
+  tracker_gps_log: "Tracker for GPS Logs"
+  default_subject: "Default subject"
+
+  setting_message: "Caution: 	ensure hat selected trackers do not have required custom fields!"
