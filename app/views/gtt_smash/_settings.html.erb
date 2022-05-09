@@ -5,7 +5,7 @@
     <%= content_tag(:label, l(:field_tracker_simple_note)) %>
     <%
       @options = []
-      Tracker.all.each do |t|
+      Tracker.all.sort.each do |t|
         @options.push([t.name,t.id])
       end
     %>
@@ -17,7 +17,7 @@
     <%= content_tag(:label, l(:field_tracker_photo_note)) %>
     <%
       @options = []
-      Tracker.all.each do |t|
+      Tracker.all.sort.each do |t|
         @options.push([t.name,t.id])
       end
     %>
@@ -29,7 +29,7 @@
     <%= content_tag(:label, l(:field_tracker_gps_log)) %>
     <%
       @options = []
-      Tracker.all.each do |t|
+      Tracker.all.sort.each do |t|
         @options.push([t.name,t.id])
       end
     %>

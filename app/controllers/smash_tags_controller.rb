@@ -117,6 +117,31 @@ class SmashTagsController < ApplicationController
     end
     # Trackers
     tracker_project_ids = valid_tracker_project_ids()
+
+    simple_notes = Tracker.where(id: Setting.plugin_redmine_gtt_smash['tracker_simple_notes'])
+    photo_notes = Tracker.where(id: Setting.plugin_redmine_gtt_smash['tracker_photo_notes'])
+    gps_logs = Tracker.where(id: Setting.plugin_redmine_gtt_smash['tracker_gps_logs'])
+    default_subject = Setting.plugin_redmine_gtt_smash['default_subject']
+
+    if simple_notes.length() > 0
+      simple_notes = {
+        tracker_id: simple_notes[0].id,
+        tracker_name: simple_notes[0].name
+      }
+    end
+    if photo_notes.length() > 0
+      photo_notes = {
+        tracker_id: photo_notes[0].id,
+        tracker_name: photo_notes[0].name
+      }
+    end
+    if gps_logs.length() > 0
+      gps_logs = {
+        tracker_id: gps_logs[0].id,
+        tracker_name: gps_logs[0].name
+      }
+    end
+
     Tracker.where(id: tracker_project_ids.keys).sort.each do |tracker|
       # Projects
       project_ids = tracker_project_ids[tracker.id]
@@ -135,6 +160,16 @@ class SmashTagsController < ApplicationController
         sectionname: tracker.name,
         sectiondescription: "GTT",
         sectionicon: "image",
+        sectionconfig: {
+          defaultnotetracker: {
+            simple_notes: simple_notes,
+            photo_notes: photo_notes,
+            gps_logs: gps_logs
+          },
+          defaults: {
+            subject: default_subject
+          }
+        },
         forms: [{
           formname: tracker.name,
           formitems: [
