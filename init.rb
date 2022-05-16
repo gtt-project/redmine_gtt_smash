@@ -22,7 +22,7 @@ Redmine::Plugin.register :redmine_gtt_smash do
 
   project_module :gtt_smash do
     permission :view_gtt_smash, {
-      smash_tags: %i( project_tags global_tags )
+      smash_tags: %i( project_tags global_tags default_notes_tags )
     }, require: :member, read: true
   end
 
