@@ -12,9 +12,9 @@ Redmine::Plugin.register :redmine_gtt_smash do
 
   settings(
     default: {
-      'tracker_simple_notes' => 0,
-      'tracker_photo_notes' => 0,
-      'tracker_gps_logs' => 1,
+      'tracker_simple_notes' => "",
+      'tracker_photo_notes' => "",
+      'tracker_gps_logs' => "",
       'default_subject' => ""
     },
     partial: 'gtt_smash/settings'
