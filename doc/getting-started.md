@@ -21,6 +21,13 @@ To get projects connected with SMASH mobile application make sure to enable the 
 
 ![Project Modules](project_modules.png)
 
+
+Set the trackers and default subject for the notes or logs in plugin setting of **Redmine GTT SMASH** so that the issue can be created based on the setting.
+
+![GTT SMASH Setting](gtt_smash_setting.png)
+
+
+
 ## Connect SMASH mobile application to Redmine
 
 ### Connect Redmine account
@@ -35,7 +42,7 @@ In SMASH mobile application top menu go to **Export** or **Import**. Click on th
 
 ### Import Redmine projects
 
-In menu again go to **Import** &#8594; **GTT** &#8594; Select Project &#8594; Click **Import**
+In menu again go to **Import** &#8594; **GTT** &#8594; Click **Import**
 
 ![GTT Import](gtt_import.png)
 
@@ -53,7 +60,7 @@ Follow these steps to upload your notes as issues or synchronize changes:
 
 1. Go to top menu **Export** &#8594; **GTT**
 2. It will inidicate if there is new data to be uploaded
-3. Choose a project for creating the issue(s)
+3. Choose a project for each note or GPS log to create the issue(s) *(unselected will be ignored)*
 4. Click on **Upload** to export the issue(s)
 
 ![GTT Export](gtt_export.png)

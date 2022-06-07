@@ -7,4 +7,4 @@ ja:
   tracker_gps_log: "Tracker for GPS Logs"
   default_subject: "Default subject"
 
-  setting_message: "Caution: 	ensure that selected trackers do not have required custom fields!"
+  setting_message: "Caution: ensure that selected trackers do not have required custom fields!"
