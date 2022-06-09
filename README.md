@@ -13,7 +13,7 @@ The Geo-Task-Tracker (GTT) S.M.A.S.H plugin adds support for the mobile app [S.M
 
 Redmine GTT S.M.A.S.H **requires PostgreSQL/PostGIS** and will not work with SQLite or MariaDB/MySQL!!!
 
-- Redmine >= 4.0.0
+- Redmine >= 4.2.0
 - [redmine_gtt](https://github.com/gtt-project/redmine_gtt/) plugin
 
 ## Installation
@@ -70,12 +70,15 @@ The GTT Project appreciates any [contributions](https://github.com/gtt-project/.
 
 ## Version History
 
+- 2.0.0 Support more SMASH data types by adding tracker setting with API endpoint
+
 See [all releases](https://github.com/gtt-project/redmine_gtt_smash/releases) with release notes.
 
 ## Authors
 
 - [Ko Nagase](https://github.com/sanak)
 - [Daniel Kastl](https://github.com/dkastl)
+- [Nisai Nob](https://github.com/nobnisai)
 - ... [and others](https://github.com/gtt-project/redmine_gtt_smash/graphs/contributors)
 
 ## LICENSE
