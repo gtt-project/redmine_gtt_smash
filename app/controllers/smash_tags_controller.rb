@@ -2,7 +2,7 @@ class SmashTagsController < ApplicationController
 
   before_action :find_optional_project_and_authorize
 
-  accept_api_auth :project_tags, :global_tags
+  accept_api_auth :project_tags, :global_tags, :default_notes_tags
 
   def project_tags
     smash_tags = build_tags
@@ -15,6 +15,13 @@ class SmashTagsController < ApplicationController
     smash_tags = build_tags
     respond_to do |format|
       format.api { render json: smash_tags }
+    end
+  end
+
+  def default_notes_tags
+    smash_tags = build_default_notes_tags
+    respond_to do |format|
+      format.api { render json: smash_tags}
     end
   end
 
@@ -117,6 +124,7 @@ class SmashTagsController < ApplicationController
     end
     # Trackers
     tracker_project_ids = valid_tracker_project_ids()
+
     Tracker.where(id: tracker_project_ids.keys).sort.each do |tracker|
       # Projects
       project_ids = tracker_project_ids[tracker.id]
@@ -334,5 +342,90 @@ class SmashTagsController < ApplicationController
       smash_tags.append(section)
     end
     return smash_tags
+  end
+
+  def build_default_notes_tags
+    simple_notes = Tracker.where(id: Setting.plugin_redmine_gtt_smash['tracker_simple_notes'])
+    photo_notes = Tracker.where(id: Setting.plugin_redmine_gtt_smash['tracker_photo_notes'])
+    gps_logs = Tracker.where(id: Setting.plugin_redmine_gtt_smash['tracker_gps_logs'])
+    default_subject = Setting.plugin_redmine_gtt_smash['default_subject']
+
+    # Trackers
+    tracker_project_ids = valid_tracker_project_ids()
+
+    simple_notes_projects = []
+    photo_notes_projects = []
+    gps_logs_projects = []
+    
+    if simple_notes.length() > 0
+      project_ids = tracker_project_ids[simple_notes[0].id]
+      if @project.blank? and project_ids.present?
+        Project.where(id: project_ids).sort.each {|project|
+          simple_notes_projects.append({
+              id: project.id.to_s,
+              name: project.name
+          })
+        }
+      end
+
+      simple_notes = {
+        id: simple_notes[0].id.to_s,
+        name: simple_notes[0].name
+      }
+    end
+    if photo_notes.length() > 0
+      project_ids = tracker_project_ids[photo_notes[0].id]
+      if @project.blank? and project_ids.present?
+        Project.where(id: project_ids).sort.each {|project|
+          photo_notes_projects.append({
+              id: project.id.to_s,
+              name: project.name
+          })
+        }
+      end
+
+      photo_notes = {
+        id: photo_notes[0].id.to_s,
+        name: photo_notes[0].name
+      }
+    end
+    if gps_logs.length() > 0
+      project_ids = tracker_project_ids[gps_logs[0].id]
+      if @project.blank? and project_ids.present?
+        Project.where(id: project_ids).sort.each {|project|
+          gps_logs_projects.append({
+              id: project.id.to_s,
+              name: project.name
+          })
+        }
+      end
+
+      gps_logs = {
+        id: gps_logs[0].id.to_s,
+        name: gps_logs[0].name
+      }
+    end
+
+    section = {
+      notes: {
+          simple: {
+            tracker: simple_notes,
+            projects: simple_notes_projects
+          },
+          photo: {
+            tracker: photo_notes,
+            projects: photo_notes_projects
+          },
+          gps: {
+            tracker: gps_logs,
+            projects: gps_logs_projects
+          }
+      },
+      defaults: {
+        subject: default_subject
+      }
+    }
+
+    return section
   end
 end

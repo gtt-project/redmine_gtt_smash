@@ -58,6 +58,12 @@ http://localhost:3000/projects/(project_id)/smash/tags.json
 http://localhost:3000/smash/tags.json 
 ```
 
+**Default tracker setting API endpoint**
+
+```
+http://localhost:3000/smash/settings.json
+```
+
 ## Contributing and Support
 
 The GTT Project appreciates any [contributions](https://github.com/gtt-project/.github/blob/main/CONTRIBUTING.md)! Feel free to contact us for [reporting problems and support](https://github.com/gtt-project/.github/blob/main/CONTRIBUTING.md).
