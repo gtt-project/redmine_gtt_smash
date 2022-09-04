@@ -1,6 +1,6 @@
 # Redmine GTT S.M.A.S.H Plugin
 
-[![Translation status](https://weblate.osgeo.org/widgets/gtt-project/-/redmine_gtt_smash/svg-badge.svg)](https://weblate.osgeo.org/engage/gtt-project/)
+<!-- ![CI #develop](https://github.com/gtt-project/redmine_gtt_smash/workflows/Test%20with%20Redmine/badge.svg) -->
 
 The Geo-Task-Tracker (GTT) S.M.A.S.H plugin adds support for the mobile app [S.M.A.S.H](https://github.com/moovida/smash):
 
@@ -13,7 +13,7 @@ The Geo-Task-Tracker (GTT) S.M.A.S.H plugin adds support for the mobile app [S.M
 
 Redmine GTT S.M.A.S.H **requires PostgreSQL/PostGIS** and will not work with SQLite or MariaDB/MySQL!!!
 
-- Redmine >= 4.0.0
+- Redmine >= 4.2.0
 - [redmine_gtt](https://github.com/gtt-project/redmine_gtt/) plugin
 
 ## Installation
@@ -55,7 +55,13 @@ http://localhost:3000/projects/(project_id)/smash/tags.json
 ### Global level API endpoint**
 
 ```txt
-http://localhost:3000/smash/tags.json 
+http://localhost:3000/smash/tags.json
+```
+
+### Default tracker setting API endpoint
+
+```txt
+http://localhost:3000/smash/settings.json
 ```
 
 ## Contributing and Support
@@ -68,12 +74,15 @@ Help us to translate GTT Project using [OSGeo Weblate](https://weblate.osgeo.org
 
 ## Version History
 
+- 2.0.0 Support more SMASH data types by adding tracker setting with API endpoint
+
 See [all releases](https://github.com/gtt-project/redmine_gtt_smash/releases) with release notes.
 
 ## Authors
 
 - [Ko Nagase](https://github.com/sanak)
 - [Daniel Kastl](https://github.com/dkastl)
+- [Nisai Nob](https://github.com/nobnisai)
 - ... [and others](https://github.com/gtt-project/redmine_gtt_smash/graphs/contributors)
 
 ## LICENSE
