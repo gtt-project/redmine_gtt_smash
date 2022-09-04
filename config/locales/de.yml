@@ -1,3 +1,9 @@
 de:
   permission_view_gtt_smash: GTT SMASH ansehen
   project_module_gtt_smash: GTT SMASH
+  field_tracker_simple_note: Tracker für Simple Notes
+  field_tracker_photo_note: Tracker für Photo Notes
+  field_tracker_gps_log: Tracker für GPS Logs
+  field_default_subject: Standard-Thema
+  setting_message: 'Achtung: Vergewissern Sie sich, dass die ausgewählten Tracker
+    keine erforderlichen benutzerdefinierten Felder haben!'
