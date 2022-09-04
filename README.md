@@ -1,8 +1,6 @@
 # Redmine GTT S.M.A.S.H Plugin
 
-<a href="https://weblate.osgeo.org/engage/gtt-project/">
-<img src="https://weblate.osgeo.org/widgets/gtt-project/-/redmine_gtt_smash/svg-badge.svg" alt="Translation status" />
-</a>
+[![Translation status](https://weblate.osgeo.org/widgets/gtt-project/-/redmine_gtt_smash/svg-badge.svg)](https://weblate.osgeo.org/engage/gtt-project/)
 
 The Geo-Task-Tracker (GTT) S.M.A.S.H plugin adds support for the mobile app [S.M.A.S.H](https://github.com/moovida/smash):
 
@@ -22,41 +20,41 @@ Redmine GTT S.M.A.S.H **requires PostgreSQL/PostGIS** and will not work with SQL
 
 To install Redmine GTT S.M.A.S.H plugin, download or clone this repository in your Redmine installation plugins directory!
 
-```
+```sh
 cd path/to/plugin/directory
 git clone https://github.com/gtt-project/redmine_gtt_smash.git
 ```
 
 Then run
 
-```
+```sh
 bundle install
 bundle exec rake redmine:plugins:migrate
 ```
 
 After restarting Redmine, you should be able to see the Redmine GTT SMASH plugin in the Plugins page.
 
-More information on installing (and uninstalling) Redmine plugins can be found here: http://www.redmine.org/wiki/redmine/Plugins
+More information on installing (and uninstalling) Redmine plugins can be found in [Redmine Plugins](http://www.redmine.org/wiki/redmine/Plugins) documentation.
 
 ## How to use
 
-- Make sure REST web services is enabled: http://localhost:3000/settings?tab=api
+- Make sure REST web services is enabled: [http://localhost:3000/settings?tab=api](http://localhost:3000/settings?tab=api)
 - Enable the plugin in project settings
 
-The Geo-Task-Tracker (GTT) S.M.A.S.H plugin connects the S.M.A.S.H mobile app with Redmine GTT. 
-It adds new API endpoints to provide the tracker type configuration as custom notes. 
+The Geo-Task-Tracker (GTT) S.M.A.S.H plugin connects the S.M.A.S.H mobile app with Redmine GTT.
+It adds new API endpoints to provide the tracker type configuration as custom notes.
 
 For more information with screenshots see the [Getting Started](doc/getting-started.md) guide.
 
-**Project level API endpoint** 
+### Project level API endpoint
 
-```
+```txt
 http://localhost:3000/projects/(project_id)/smash/tags.json
 ```
 
-**Global level API endpoint** 
+### Global level API endpoint**
 
-```
+```txt
 http://localhost:3000/smash/tags.json 
 ```
 
@@ -66,9 +64,7 @@ The GTT Project appreciates any [contributions](https://github.com/gtt-project/.
 
 Help us to translate GTT Project using [OSGeo Weblate](https://weblate.osgeo.org/engage/gtt-project/):
 
-<a href="https://weblate.osgeo.org/engage/gtt-project/">
-<img src="https://weblate.osgeo.org/widgets/gtt-project/-/redmine_gtt_smash/multi-auto.svg" alt="Translation status" />
-</a>
+[![Translation status](https://weblate.osgeo.org/widgets/gtt-project/-/redmine_gtt_smash/multi-auto.svg)](https://weblate.osgeo.org/engage/gtt-project/)
 
 ## Version History
 
@@ -83,4 +79,3 @@ See [all releases](https://github.com/gtt-project/redmine_gtt_smash/releases) wi
 ## LICENSE
 
 This program is free software. See [LICENSE](LICENSE) for more information.
-
