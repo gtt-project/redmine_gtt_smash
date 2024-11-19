@@ -1,32 +1,30 @@
-<div class="box tabular settings">
-  <%
-    @options = ["None"]
-    Tracker.all.sort.each do |t|
-      @options.push([t.name,t.id])
-    end
-  %>
-  <h3><%= l(:setting_message) %></h3>
+<%
+  @options = ["None"]
+  Tracker.all.sort.each do |t|
+    @options.push([t.name,t.id])
+  end
+%>
+<h3><%= l(:setting_message) %></h3>
 
-  <p>
-    <%= content_tag(:label, l(:field_tracker_simple_note)) %>
-    <%= select_tag "settings[tracker_simple_notes]",
-      options_for_select(@options, @settings['tracker_simple_notes']) %>
-  </p>
+<p>
+  <%= content_tag(:label, l(:field_tracker_simple_note)) %>
+  <%= select_tag "settings[tracker_simple_notes]",
+    options_for_select(@options, @settings['tracker_simple_notes']) %>
+</p>
 
-  <p>
-    <%= content_tag(:label, l(:field_tracker_photo_note)) %>
-    <%= select_tag "settings[tracker_photo_notes]",
-      options_for_select(@options, @settings['tracker_photo_notes']) %>
-  </p>
+<p>
+  <%= content_tag(:label, l(:field_tracker_photo_note)) %>
+  <%= select_tag "settings[tracker_photo_notes]",
+    options_for_select(@options, @settings['tracker_photo_notes']) %>
+</p>
 
-  <p>
-    <%= content_tag(:label, l(:field_tracker_gps_log)) %>
-    <%= select_tag "settings[tracker_gps_logs]",
-      options_for_select(@options, @settings['tracker_gps_logs']) %>
-  </p>
+<p>
+  <%= content_tag(:label, l(:field_tracker_gps_log)) %>
+  <%= select_tag "settings[tracker_gps_logs]",
+    options_for_select(@options, @settings['tracker_gps_logs']) %>
+</p>
 
-  <p>
-    <%= content_tag(:label, l(:field_default_subject)) %>
-    <%= text_field_tag 'settings[default_subject]', @settings['default_subject'], :size => 30 %>
-  </p>
-</div>
+<p>
+  <%= content_tag(:label, l(:field_default_subject)) %>
+  <%= text_field_tag 'settings[default_subject]', @settings['default_subject'], :size => 30 %>
+</p>
