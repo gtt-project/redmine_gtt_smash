@@ -26,13 +26,10 @@ the **GTT SMASH** module in your Redmine project settings.
 
 ![Project Modules](project_modules.png)
 
-
 Set the trackers and default subject for the notes or logs in the plugin setting
 of **Redmine GTT SMASH** so that the issue can be created based on the setting.
 
 ![GTT SMASH Setting](gtt_smash_setting.png)
-
-
 
 ## Connect SMASH mobile application to Redmine
 
