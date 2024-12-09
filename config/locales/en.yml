@@ -6,5 +6,5 @@ en:
   field_tracker_photo_note: "Tracker for Photo Notes"
   field_tracker_gps_log: "Tracker for GPS Logs"
   field_default_subject: "Default subject"
-  
+
   setting_message: "Caution: ensure that selected trackers do not have required custom fields!"
